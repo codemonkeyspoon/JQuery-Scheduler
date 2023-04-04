@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
   // TODO: Add a listener for click events on the save button.
   $(".saveBtn").on("click", function() {
     // Use the id in the containing time-block as a key to save the user input in local storage
@@ -8,7 +8,7 @@ $(function() {
   });
 
   // TODO: Add code to apply the past, present, or future class to each time block
-  const currentHour = new Date().getHours(); // Get the current hour using Day.js
+  const currentHour = dayjs().hour(); // Get the current hour using Day.js
   $(".time-block").each(function() {
     var blockHour = parseInt($(this).attr("id").split("-")[1]); // Get the hour from the id
     if (blockHour < currentHour) {
@@ -18,6 +18,7 @@ $(function() {
     } else {
       $(this).addClass("future");
     }
+    console.log(currentHour)
   });
 
   // TODO: Add code to get any user input that was saved in localStorage and set the values of the corresponding textarea elements
